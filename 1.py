@@ -29,10 +29,12 @@ https://pythonworld.ru/osnovy/pep-8-rukovodstvo-po-napisaniyu-koda-na-python.htm
 
 
     Например для обмена переменными
-        name1 = 'Timur'
-        name2 = 'Gvido'
+       x, y = y, x
 
-        name1, name2 = name2, name1
+                Тоже самое, что:
+                        temp = x
+                        x = y
+                        y = temp
 
 
 
@@ -161,35 +163,90 @@ TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO 
 
 TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
 
+Цикл for
+
+        range(n)            - от 0 до n-1
+        range(n, m):        - от n  до  m - 1.
+        range(n, m, k)      - от n  до  m - 1 , с шагом k.
+
+        range(7, 3)	        пустая последовательность
+        range(3, 10, -2)    пустая последовательность
+
+     for i in range(10):
+            print(i, '-- Привет')
+
+        _ когда переменная цикла не используется в теле цикла.
+        for _ in range(5):
+            print('Python - awesome!')
+
+
+    break     - прерывает цикл
+    continue  - прерывает итерацию
+
+
+
+Цикл while
+
+       str = input()
+       while str != "стоп" and str != "хватит"
+            .....
+            str = input()
+
+
+
+        Обработка цифр числа
+
+        n = int(input())
+        while n != 0:                  пока в числе есть цифры
+            last_digit = n % 10        получить последнюю цифру
+            ........                   код обработки последней цифры
+            n = n // 10                удалить последнюю цифру из числа
+
+
+
+
+Блок else в циклах
+
+    Если же слово else присутствует, то блок кода2 будет выполняться только в том случае,
+    если цикл завершается штатным образом.
+    Под штатным завершением цикла подразумевается его завершение без использования оператора прерывания break.
+
+    Если цикл преждевременно завершается с помощью оператора прерывания break, то блок кода в инструкции else не будет выполнен.
+
+
+        while условие:
+            блок кода1
+        else:
+            блок кода2
+
+        # или
+
+        for i in range(10):
+            блок кода1
+        else:
+            блок кода2
+
+
+
 
 
 
 '''
 
-import math
 
-x = float(input())
-print(math.floor(x) + math.ceil(x))
+n = int(input())
+max_digit = -1
 
-if (x > 0):
-    print(int(x) + int(x) + 1)
+while n > 0:
+    digit = n % 10
+    if digit % 3 == 0:
+        if digit > max_digit:
+            max_digit = digit
+    n = n // 10
+
+
+if max_digit < 0:
+    print('NO')
 else:
-    print(int(x) + int(x) - 1)
+    print(max_digit)
 
-d = b * b - 4 * a * c
-
-if d > 0:
-    x1 = (-b - math.sqrt(b * b - 4 * a * c)) / (2 * a)
-    x2 = (-b + math.sqrt(b * b - 4 * a * c)) / (2 * a)
-
-    if x1 < x2:
-        print(x1)
-        print(x2)
-    else:
-        print(x2)
-        print(x1)
-
-elif d == 0:
-    print(-b / (2 * a))
-elif d < 0:
-    print("Нет корней")
